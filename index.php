@@ -28,6 +28,7 @@ $cool_websites = $query->fetchAll();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHP Playground</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
@@ -74,7 +75,55 @@ $cool_websites = $query->fetchAll();
                 </table>
             </div>
         </div>
+
+        <div class="row mt-5">
+            <!-- Vue JS instance -->
+            <div class="col" id="cool-sites">
+                <div class="d-flex justify-content-between">
+                    <h2>VueJS Example</h2>
+                    <button class="btn btn-primary mb-2 live-updates-button" 
+                          v-on:click="(liveUpdates ? liveUpdates = false : liveUpdates = true); (liveUpdates ? isLoading = true : isLoading = false); getSitesAjax(); "
+                          v-bind:class="{ 'btn-danger live-pulse': liveUpdates, 'spinner-grow': isLoading } ">
+                          {{ buttonText }}
+                  </button>
+                </div>
+    
+                <div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Link</th>
+                            <th scope="col">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr v-for="site in coolSiteList">
+                            <th scope="row"></th>
+                            <td>{{ site.name }}</td>
+                            <td><a v-bind:href="'https://' + site.link" target="_blank">{{ site.link }}</a></td>
+                            <td>{{ site.description }}</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                
+                </div>
+            </div>
+        </div>
     </div>
+
+    <!-- Get VueJS -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> 
+
+    <!-- Get the Almighty -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
+
+    <!-- Get out script -->
+    <script src="scripts.js"></script>
     
 </body>
 </html>
