@@ -6,7 +6,8 @@ var coolSites = new Vue({
         liveUpdates: false,
         isLoading: false,
         updateFrequency: 1000,
-        buttonText: 'get live updates'
+        buttonText: 'get live updates',
+        exampleText: 'Some text here'
     },
     methods: {
         getSitesAuto: function () {
@@ -43,5 +44,18 @@ var coolSites = new Vue({
         this.$nextTick(function () {
             this.getSitesAjax()
         });
+    }
+})
+
+
+var buttonExample = new Vue ({
+    el: '.button-example',
+    data: {
+        buttonText: 'my button'
+    },
+    methods: {
+        changeButtonText: function () {
+            this.buttonText = 'new text';
+        }
     }
 })

@@ -79,6 +79,10 @@ $cool_websites = $query->fetchAll();
         <div class="row mt-5">
             <!-- Vue JS instance -->
             <div class="col" id="cool-sites">
+                <form action="">
+                    <input v-model="exampleText" placeholder="edit me">
+                </form>
+                <p>{{ exampleText }}</p>
                 <div class="d-flex justify-content-between">
                     <h2>VueJS Example</h2>
                     <button class="btn btn-primary mb-2 live-updates-button" 
@@ -112,7 +116,15 @@ $cool_websites = $query->fetchAll();
                 
                 </div>
             </div>
+
+            
         </div>
+
+        <div class="row button-example">
+            <p>{{ buttonText }}</p>
+            <button v-on:click="changeButtonText();" class="btn btn-primary">Change text</button>
+        </div>
+        
     </div>
 
     <!-- Get VueJS -->
